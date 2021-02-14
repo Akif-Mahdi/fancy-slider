@@ -15,16 +15,22 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
 // show images 
 const showImages = (images) => {
-  imagesArea.style.display = 'block';
-  gallery.innerHTML = '';
-  // show gallery title
-  galleryHeader.style.display = 'flex';
-  images.forEach(image => {
-    let div = document.createElement('div');
-    div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
-    gallery.appendChild(div)
-  })
+  if(images.length==0){
+    alert("Sorry! No image is found!");
+  }
+  else{
+    imagesArea.style.display = 'block';
+    gallery.innerHTML = '';
+    // show gallery title
+    galleryHeader.style.display = 'flex';
+    images.forEach(image => {
+      let div = document.createElement('div');
+      div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
+      div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+      gallery.appendChild(div)
+    })
+  }
+  
 
 }
 
@@ -130,4 +136,8 @@ document.getElementById("search").addEventListener("keypress",function(event){
   if(event.key==="Enter"){
     searchBtn.click();
   }
+})
+
+document.getElementById("stop-btn").addEventListener("click",function(){
+  document.querySelector('.main').style.display = 'none';
 })
