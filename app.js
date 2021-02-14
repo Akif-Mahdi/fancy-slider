@@ -51,6 +51,7 @@ const selectItem = (event, img) => {
   if (item === -1) {
     sliders.push(img);
   } else {
+    sliders.splice(item,1);
     alert('Item removed!');
   }
 }
